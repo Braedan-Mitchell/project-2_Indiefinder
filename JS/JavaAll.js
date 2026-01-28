@@ -1,0 +1,1 @@
+/* CSS styles for the indiefind project that will be applied to all pages. Any other styles that are page specific will be in other css files.*/
