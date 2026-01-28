@@ -14,3 +14,6 @@ The point of this website is to solve a few major problems in the gaming industr
 1. As a bored gamer, I want to easily find a fresh new indie game to give a try.
 2. As someone who saw a game while scrolling YouTube, I want to see if I have the hardware to get it.
 3. As a fan of a specific indie game, I want to be able to send them extra money to show my appreciation
+
+## Wireframe
+https://www.figma.com/make/Y1tC8fRCJvtRQDHPoC4WwG/Indie-Game-Discovery-Website?fullscreen=1&t=ohY3U6OvHvDX5Zwh-1
