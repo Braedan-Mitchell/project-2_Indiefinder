@@ -1,9 +1,119 @@
 /* CSS styles for the indiefind project that will be applied to all pages. Any other styles that are page specific will be in other css files.*/
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Navbar Styling */
+#navbar {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
     padding: 0;
-    background-color: #d86d6d;
-    color: #4187b8;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 65px;
+    width: 100%;
+    transition: height 0.3s ease;
+}
+
+#navbar a {
+    color: #ecf0f1;
+    text-decoration: none;
+    padding: 20px 25px;
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+#navbar a:first-child {
+    font-weight: 700;
+    font-size: 18px;
+    margin-right: auto;
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+#navbar a:hover {
+    background-color: rgba(52, 152, 219, 0.2);
+    border-bottom-color: #3498db;
+    color: #3498db;
+}
+
+#navbar a:active {
+    background-color: rgba(52, 152, 219, 0.3);
+    border-bottom-color: #2980b9;
+}
+
+/* Hamburger Menu Button */
+#hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #ecf0f1;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 20px 25px;
+    transition: all 0.3s ease;
+}
+
+#hamburger-btn:hover {
+    background-color: rgba(52, 152, 219, 0.2);
+    color: #3498db;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    #navbar {
+        flex-wrap: wrap;
+        width: 100%;
+        height: auto;
+        max-height: 65px;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    #navbar.active {
+        max-height: 300px;
+    }
+
+    #hamburger-btn {
+        display: inline-flex;
+        align-items: center;
+        order: 2;
+    }
+
+    #navbar a:not(:first-child) {
+        display: flex;
+        width: 100%;
+        padding: 15px 25px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        order: 3;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    #navbar a:first-child {
+        order: 1;
+        height: 65px;
+        display: flex;
+        align-items: center;
+    }
+
+    #navbar.active a:not(:first-child) {
+        opacity: 1;
+    }
+
+    #hamburger-btn.active {
+        border-bottom-color: #3498db;
+        color: #3498db;
+    }
 }

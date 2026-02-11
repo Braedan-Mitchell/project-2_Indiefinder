@@ -1,1 +1,17 @@
 /* CSS formatting for the indiefind project that will be applied to all pages. Any other formats that are page specific will be in other css files.*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Default margin for all content except navbar */
+body > div,
+body > main,
+body > section,
+body > article,
+body > header:not(#navbar),
+body > footer {
+    margin: 2%;
+}
