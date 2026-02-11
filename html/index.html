@@ -8,6 +8,7 @@
     <title>Indiefinder</title>
     <link rel="stylesheet" href="../css/styleAll.css">
     <link rel="stylesheet" href="../css/formatAll.css">
+    <link rel="stylesheet" href="../css/csspages/cssindex.css">
     <script src="../JS/JavaAll.js"></script>
     <script src="../JS/JSpages/JSindex.js"></script>
 </head>
@@ -24,6 +25,33 @@
     <div>
         <h1>Welcome to Indiefinder</h1>
         <p>Your go-to platform for discovering the best indie games out there!</p>
+    </div>
+
+    <div id="featured-games">
+        <h2>Featured Games</h2>
+
+        <div class="carousel" aria-roledescription="carousel">
+            <div class="slides">
+                <div class="slide">
+                    <img src="../images/game1.jpg" alt="Game 1">
+                    <h3>Game Title 1</h3>
+                    <p>A brief description of Game 1.</p>
+                </div>
+                <div class="slide">
+                    <img src="../images/game2.jpg" alt="Game 2">
+                    <h3>Game Title 2</h3>
+                    <p>A brief description of Game 2.</p>
+                </div>
+                <div class="slide">
+                    <img src="../images/game3.jpg" alt="Game 3">
+                    <h3>Game Title 3</h3>
+                    <p>A brief description of Game 3.</p>
+                </div>
+            </div>
+
+            <button id="prev-btn" class="carousel-btn" aria-label="Previous slide">‹</button>
+            <button id="next-btn" class="carousel-btn" aria-label="Next slide">›</button>
+        </div>
     </div>
 </body>
 </html>
