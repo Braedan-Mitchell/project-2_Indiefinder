@@ -1,0 +1,1 @@
+/* JS code for the games page of the indiefind project */

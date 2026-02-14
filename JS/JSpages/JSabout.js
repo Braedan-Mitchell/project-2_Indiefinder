@@ -1,0 +1,1 @@
+/* JS code for the about page of the indiefind project */
