@@ -29,29 +29,75 @@
         <p>Explore our curated collection of indie games across various genres and platforms!</p>   
     </div>
 
+    <div class="filters-section">
+        <div class="filter-group">
+            <label for="search-bar">Search:</label>
+            <input type="text" id="search-bar" placeholder="Search games...">
+        </div>
+
+        <div class="filter-group">
+            <label for="genre-filter">Genre:</label>
+            <select id="genre-filter">
+                <option value="">All Genres</option>
+                <option value="adventure">Adventure</option>
+                <option value="puzzle">Puzzle</option>
+                <option value="rpg">RPG</option>
+                <option value="action">Action</option>
+                <option value="strategy">Strategy</option>
+                <option value="simulation">Simulation</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="sort-option">Sort by:</label>
+            <select id="sort-option">
+                <option value="name-asc">Name (A-Z)</option>
+                <option value="name-desc">Name (Z-A)</option>
+                <option value="price-low">Price (Low to High)</option>
+                <option value="price-high">Price (High to Low)</option>
+                <option value="newest">Newest</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="price-range">Price Range: $<span id="price-value">0</span> - $<span id="price-max-value">50</span></label>
+            <input type="range" id="price-range" min="0" max="100" value="50">
+        </div>
+
+        <button id="reset-filters">Reset Filters</button>
+    </div>
+
     <div class="games-container">
         <div class="game-box">
             <div class="game-image"></div>
             <div class="game-info">
-                <h3 class="game-name">Game Name</h3>
-                <p class="game-price">$19.99</p>
-                <p class="game-genres">Adventure, Puzzle</p>
+                <h3 class="game-name">Balatro</h3>
+                <p class="game-price">$14.99</p>
+                <p class="game-genres">Strategy, Puzzle</p>
             </div>
         </div>
         <div class="game-box">
             <div class="game-image"></div>
             <div class="game-info">
-                <h3 class="game-name">Game Name</h3>
-                <p class="game-price">$19.99</p>
-                <p class="game-genres">Adventure, Puzzle</p>
+                <h3 class="game-name">Risk of Rain 2</h3>
+                <p class="game-price">$24.99</p>
+                <p class="game-genres">Action</p>
             </div>
         </div>
         <div class="game-box">
             <div class="game-image"></div>
             <div class="game-info">
-                <h3 class="game-name">Game Name</h3>
-                <p class="game-price">$19.99</p>
-                <p class="game-genres">Adventure, Puzzle</p>
+                <h3 class="game-name">Palworld</h3>
+                <p class="game-price">$29.99</p>
+                <p class="game-genres">Adventure, RPG</p>
+            </div>
+        </div>
+        <div class="game-box">
+            <div class="game-image"></div>
+            <div class="game-info">
+                <h3 class="game-name">Poppy Playtime</h3>
+                <p class="game-price">$0 (<i>Free to Play</i>)</p>
+                <p class="game-genres">RPG, Puzzle</p>
             </div>
         </div>
         <div class="game-box">
