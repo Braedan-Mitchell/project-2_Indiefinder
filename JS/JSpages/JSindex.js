@@ -1,10 +1,10 @@
 /* JS code for the index page of the indiefind project */
 
-document.addEventListener('DOMContentLoaded', () => {
-    const slidesEl = document.querySelector('.slides');
-    const slides = Array.from(document.querySelectorAll('.slide'));
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
+function initCarousel(slidesSelector, prevBtnId, nextBtnId) {
+    const slidesEl = document.querySelector(slidesSelector);
+    const slides = Array.from(slidesEl.querySelectorAll('.slide'));
+    const prevBtn = document.getElementById(prevBtnId);
+    const nextBtn = document.getElementById(nextBtnId);
     if (!slidesEl || slides.length === 0) return;
 
     let index = 0;
@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
         slidesEl.style.transform = `translateX(-${index * 100}%)`;
         prevBtn.disabled = index === 0;
         nextBtn.disabled = index === slides.length - 1;
-        // hide controls if only one slide
         const show = slides.length > 1;
         prevBtn.style.display = show ? 'block' : 'none';
         nextBtn.style.display = show ? 'block' : 'none';
@@ -29,12 +28,18 @@ document.addEventListener('DOMContentLoaded', () => {
         update();
     });
 
-    // keyboard support
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') prevBtn.click();
         if (e.key === 'ArrowRight') nextBtn.click();
     });
 
     update();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initCarousel('#featured-games .slides', 'prev-btn', 'next-btn');
+    initCarousel('#new-games .slides', 'prev-btn-2', 'next-btn-2');
+    initCarousel('#popular-games .slides', 'prev-btn-3', 'next-btn-3');
+    initCarousel('#cheaper-games .slides', 'prev-btn-4', 'next-btn-4');
 });
 

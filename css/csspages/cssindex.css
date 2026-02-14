@@ -5,6 +5,18 @@
     padding: 8px 0;
  }
 
+#carousel-row {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    padding: 8px 0;
+}
+
+#carousel-row > div {
+    flex: 1;
+    min-width: 0;
+}
+
 /* Simple carousel styles (replaces games-viewport / games-track / game-card) */
 .carousel {
     position: relative;
@@ -57,4 +69,24 @@
 #prev-btn { left: 8px; }
 #next-btn { right: 8px; }
 
+#prev-btn-2 { left: 8px; }
+#next-btn-2 { right: 8px; }
+
+#prev-btn-3 { left: 8px; }
+#next-btn-3 { right: 8px; }
+
+#prev-btn-4 { left: 8px; }
+#next-btn-4 { right: 8px; }
+
 .carousel-btn:disabled { opacity: 0.4; cursor: default; }
+
+/* Mobile Responsive - Stack carousels vertically on small screens */
+@media (max-width: 1024px) {
+    #carousel-row {
+        flex-direction: column;
+    }
+
+    #carousel-row > div {
+        width: 100%;
+    }
+}
