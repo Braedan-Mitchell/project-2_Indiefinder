@@ -1,1 +1,54 @@
 /*css styling for the about page of the indiefind project */
+
+/* Card / bubble layout for about page */
+:root{
+    /* fallback values — adjust to match your real navbar colors in your main stylesheet */
+    --nav-bg: #1e293b;        /* default navbar color (dark slate) */
+    --nav-accent: #2563eb;    /* brighter accent for hover glow */
+}
+
+
+.about-grid{
+    display:flex;
+    gap:1.25rem;
+    align-items:flex-start;
+    justify-content:flex-start; /* changed: let cards size to content */
+    flex-wrap:wrap;
+    margin:1.25rem;
+}
+
+.card{
+    background: var(--nav-bg);
+    color: #ffffff;
+
+    border-radius:12px;
+    padding:1.1rem 1.25rem;
+    box-shadow:0 6px 18px rgba(12,18,33,0.08);
+    border:1px solid rgba(255,255,255,0.06);
+    flex: 0 1 auto; /* changed: size to content, expand/shrink with text */
+    width: auto;
+    min-width: 0;
+
+    transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+/* hover: come forward slightly and glow a brighter color */
+.card:hover{
+    transform: translateY(-6px) scale(1.02);
+    box-shadow:
+        0 12px 30px rgba(12,18,33,0.18),
+        0 0 18px color-mix(in srgb, var(--nav-accent) 70%, rgba(255,255,255,0) 30%);
+    filter: brightness(1.06);
+}
+
+.card h2{ margin-top:0; }
+
+.about-content p,
+.how-it-works p,
+.how-to-help p{ margin-top:0.5rem; color:#fff; line-height:1.45; }
+
+footer{ text-align:center; margin:2rem 0; color:#444; }
+
+@media (max-width:720px){
+    .about-grid{ flex-direction:column; gap:1rem; margin:0.75rem; }
+}

@@ -6,6 +6,14 @@ body {
     color: #333;
 }
 
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    margin-top: 40px;
+}
+
 /* Navbar Styling */
 #navbar {
     background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
