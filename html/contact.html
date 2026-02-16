@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/cssall/formatAll.css">
     <link rel="stylesheet" href="../css/csspages/csscontact.css">
     <script src="../JS/JSall/JavaAll.js"></script>
-    <script src="../JS/JSpages/JScontact.js"></script>
+    <script src="../JS/JSpages/JScontact.js" defer></script>
 </head>
 
 <body>
@@ -27,6 +27,22 @@
     <div>
         <h1>Contact Us</h1>
         <p>Have questions, feedback, or want to contribute? Reach out to us here!</p>
+
+        <form id="contactForm" novalidate>
+            <label for="name">Your Name</label>
+            <input id="name" name="name" type="text" required minlength="2" />
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+
+            <label for="title">Question Title</label>
+            <input id="title" name="title" type="text" required minlength="3" />
+
+            <label for="message">Your Question</label>
+            <textarea id="message" name="message" rows="6" required minlength="10"></textarea>
+
+            <button type="submit" id="submitBtn">Send Question</button>
+        </form>
     </div>
     
 </body>
