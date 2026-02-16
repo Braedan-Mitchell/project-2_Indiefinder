@@ -1,6 +1,12 @@
 /* JS code for the contact page of the indiefind project */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Show thank-you popup after a reload if submission completed
+    if (sessionStorage.getItem('indiefind_form_submitted') === 'true') {
+        alert('Thank you! Your information has been submitted.');
+        sessionStorage.removeItem('indiefind_form_submitted');
+    }
+
     const form = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
     const nameInput = document.getElementById('name');
@@ -83,16 +89,92 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // All fields valid — open user's mail client with prefilled content
-        const recipient = 'braebrae04@icloud.com';
-        const subject = encodeURIComponent(title);
-        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+        // Mark as submitted then reload so page clears and shows thank-you on load
+        sessionStorage.setItem('indiefind_form_submitted', 'true');
+        location.reload();
+    });
 
-        // Trigger mail client
-        window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    /* --- Recommend a game form handling --- */
+    const recommendForm = document.getElementById('recommendForm');
+    const gameTitle = document.getElementById('gameTitle');
+    const gameDesc = document.getElementById('gameDesc');
+    const foundOn = document.getElementById('foundOn');
+    const recommendSubmit = document.getElementById('recommendSubmit');
 
-        // Do not clear fields here so user data is preserved even after mail client opens
-        submitBtn.disabled = true;
-        setTimeout(() => submitBtn.disabled = false, 1000);
+    // Immediate validation for recommend form fields
+    gameTitle.addEventListener('input', () => {
+        if (!gameTitle.value.trim()) {
+            gameTitle.setCustomValidity('Please enter the game title.');
+        } else {
+            gameTitle.setCustomValidity('');
+        }
+    });
+
+    gameDesc.addEventListener('input', () => {
+        const v = gameDesc.value.trim();
+        if (!v) {
+            gameDesc.setCustomValidity('Please enter a brief description.');
+        } else if (v.length > 200) {
+            gameDesc.setCustomValidity('Description must be 200 characters or fewer.');
+        } else {
+            gameDesc.setCustomValidity('');
+        }
+    });
+
+    foundOn.addEventListener('change', () => {
+        if (!foundOn.value) {
+            foundOn.setCustomValidity('Please select where you found the game.');
+        } else {
+            foundOn.setCustomValidity('');
+        }
+    });
+
+    // Ensure clicking the Recommend button shows the popup if anything is missing
+    recommendSubmit.addEventListener('click', () => {
+        if (!gameTitle.value.trim() || !gameDesc.value.trim() || gameDesc.value.trim().length > 200 || !foundOn.value) {
+            recommendForm.reportValidity();
+        }
+    });
+
+    recommendForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Reset validity
+        gameTitle.setCustomValidity('');
+        gameDesc.setCustomValidity('');
+        foundOn.setCustomValidity('');
+
+        let validRec = true;
+
+        const titleVal = gameTitle.value.trim();
+        const descVal = gameDesc.value.trim();
+        const foundVal = foundOn.value;
+
+        if (!titleVal) {
+            gameTitle.setCustomValidity('Please enter the game title.');
+            validRec = false;
+        }
+
+        if (!descVal) {
+            gameDesc.setCustomValidity('Please enter a brief description.');
+            validRec = false;
+        } else if (descVal.length > 200) {
+            gameDesc.setCustomValidity('Description must be 200 characters or fewer.');
+            validRec = false;
+        }
+
+        if (!foundVal) {
+            foundOn.setCustomValidity('Please select where you found the game.');
+            validRec = false;
+        }
+
+        if (!validRec) {
+            recommendForm.reportValidity();
+            return;
+        }
+
+        // Mark as submitted then reload so page clears and shows thank-you on load
+        sessionStorage.setItem('indiefind_form_submitted', 'true');
+        location.reload();
     });
 });

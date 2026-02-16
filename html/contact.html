@@ -47,6 +47,29 @@
                 <button type="submit" id="submitBtn">Send Question</button>
             </form>
         </section>
+
+        <!-- New recommend-a-game box -->
+        <section class="recommend-box" aria-labelledby="recommend-heading">
+            <h2 id="recommend-heading">Recommend an Indie Game</h2>
+
+            <form id="recommendForm" novalidate>
+                <label for="gameTitle">Game Title</label>
+                <input id="gameTitle" name="gameTitle" type="text" required />
+
+                <label for="gameDesc">Brief Description (max 200 chars)</label>
+                <textarea id="gameDesc" name="gameDesc" rows="4" maxlength="200" required></textarea>
+
+                <label for="foundOn">Where did you find the game?</label>
+                <select id="foundOn" name="foundOn" required>
+                    <option value="" disabled selected>Select a source</option>
+                    <option value="Steam">Steam</option>
+                    <option value="Epic Games">Epic Games</option>
+                    <option value="Nintendo eShop">Nintendo eShop</option>
+                </select>
+
+                <button type="submit" id="recommendSubmit">Recommend Game</button>
+            </form>
+        </section>
     </div>
     
 </body>
