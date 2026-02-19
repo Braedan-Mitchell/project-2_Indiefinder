@@ -1,6 +1,6 @@
 /* JS code for the games page of the indiefind project - games library functionality */
 
-const API_URL = "../db.json";
+const API_URL = "../json/db.json";
 window.gamesData = []; // Store games globally for filtering
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -25,6 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const img = document.createElement("img");
       img.src = game.image || "placeholder.jpg";
       img.alt = game.title;
+      img.className = "game-image";
+      
+      const gameInfo = document.createElement("div");
+      gameInfo.className = "game-info";
       
       const title = document.createElement("h3");
       title.textContent = game.title; // Safe: text only, no HTML
@@ -38,10 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
       price.textContent = `$${game.price.toFixed(2)}`;
       price.className = "game-price";
       
+      gameInfo.appendChild(title);
+      gameInfo.appendChild(genres);
+      gameInfo.appendChild(price);
+      
       gameElement.appendChild(img);
-      gameElement.appendChild(title);
-      gameElement.appendChild(genres);
-      gameElement.appendChild(price);
+      gameElement.appendChild(gameInfo);
       gameBox.appendChild(gameElement);
     });
   }

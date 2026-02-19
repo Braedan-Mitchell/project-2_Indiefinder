@@ -86,6 +86,10 @@ document.addEventListener('gamesLoaded', function() {
             const img = document.createElement('img');
             img.src = game.image || 'placeholder.jpg';
             img.alt = game.title;
+            img.className = 'game-image';
+            
+            const gameInfo = document.createElement('div');
+            gameInfo.className = 'game-info';
             
             const title = document.createElement('h3');
             title.textContent = game.title;
@@ -99,10 +103,12 @@ document.addEventListener('gamesLoaded', function() {
             price.textContent = `$${game.price.toFixed(2)}`;
             price.className = 'game-price';
             
+            gameInfo.appendChild(title);
+            gameInfo.appendChild(genres);
+            gameInfo.appendChild(price);
+            
             gameElement.appendChild(img);
-            gameElement.appendChild(title);
-            gameElement.appendChild(genres);
-            gameElement.appendChild(price);
+            gameElement.appendChild(gameInfo);
             gameBox.appendChild(gameElement);
         });
     }
