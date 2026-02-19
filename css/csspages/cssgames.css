@@ -74,6 +74,7 @@
 
 .game-box {
     display: flex;
+    margin: 0 10px 10px 0;
     flex-direction: column;
     background-color: #fff;
     border-radius: 8px;
@@ -90,8 +91,8 @@
 .game-image {
     width: 100%;
     aspect-ratio: 1;
-    background-color: #e0e0e0;
-    border-bottom: 1px solid #ddd;
+    background-color: #ffffff;
+    border-bottom: 2px solid #ddd;
 }
 
 .game-info {

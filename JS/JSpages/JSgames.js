@@ -1,6 +1,6 @@
 /* JS code for the games page of the indiefind project */
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('gamesLoaded', function() {
     const searchBar = document.getElementById('search-bar');
     const genreFilter = document.getElementById('genre-filter');
     const sortOption = document.getElementById('sort-option');
@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const priceValue = document.getElementById('price-value');
     const priceMaxValue = document.getElementById('price-max-value');
     const resetBtn = document.getElementById('reset-filters');
-    const gameBoxes = Array.from(document.querySelectorAll('.game-box'));
 
     // Update price slider display
     priceRange.addEventListener('input', function() {
@@ -41,11 +40,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const maxPrice = parseInt(priceRange.value);
         const sortBy = sortOption.value;
 
-        // Filter games
-        let filtered = gameBoxes.filter(box => {
-            const gameName = box.querySelector('.game-name').textContent.toLowerCase();
-            const gamePrice = parseFloat(box.querySelector('.game-price').textContent.replace('$', ''));
-            const gameGenres = box.querySelector('.game-genres').textContent.toLowerCase();
+        // Filter games from actual data
+        let filtered = window.gamesData.filter(game => {
+            const gameName = game.title.toLowerCase();
+            const gamePrice = game.price;
+            const gameGenres = game.genre.map(g => g.toLowerCase()).join(', ');
 
             const matchesSearch = gameName.includes(searchTerm);
             const matchesGenre = selectedGenre === '' || gameGenres.includes(selectedGenre);
@@ -56,10 +55,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Sort games
         filtered.sort((a, b) => {
-            const nameA = a.querySelector('.game-name').textContent;
-            const nameB = b.querySelector('.game-name').textContent;
-            const priceA = parseFloat(a.querySelector('.game-price').textContent.replace('$', ''));
-            const priceB = parseFloat(b.querySelector('.game-price').textContent.replace('$', ''));
+            const nameA = a.title;
+            const nameB = b.title;
+            const priceA = a.price;
+            const priceB = b.price;
 
             switch(sortBy) {
                 case 'name-asc':
@@ -77,9 +76,34 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Update display
-        const container = document.querySelector('.games-container');
-        container.innerHTML = '';
-        filtered.forEach(box => container.appendChild(box.cloneNode(true)));
+        // Update display by re-rendering from filtered data
+        const gameBox = document.querySelector('#game-box');
+        gameBox.innerHTML = '';
+        filtered.forEach(game => {
+            const gameElement = document.createElement('div');
+            gameElement.className = 'game-box';
+            
+            const img = document.createElement('img');
+            img.src = game.image || 'placeholder.jpg';
+            img.alt = game.title;
+            
+            const title = document.createElement('h3');
+            title.textContent = game.title;
+            title.className = 'game-name';
+            
+            const genres = document.createElement('p');
+            genres.textContent = game.genre.join(', ');
+            genres.className = 'game-genres';
+            
+            const price = document.createElement('p');
+            price.textContent = `$${game.price.toFixed(2)}`;
+            price.className = 'game-price';
+            
+            gameElement.appendChild(img);
+            gameElement.appendChild(title);
+            gameElement.appendChild(genres);
+            gameElement.appendChild(price);
+            gameBox.appendChild(gameElement);
+        });
     }
 });

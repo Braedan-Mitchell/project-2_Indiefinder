@@ -1,6 +1,7 @@
 /* JS code for the games page of the indiefind project - games library functionality */
 
 const API_URL = "../db.json";
+window.gamesData = []; // Store games globally for filtering
 
 document.addEventListener("DOMContentLoaded", () => {
   const gameBox = document.querySelector("#game-box");
@@ -8,7 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
   async function fetchGames() {
     const response = await fetch(API_URL);
     const data = await response.json();
+    window.gamesData = data.games; // Store for filtering
     renderGames(data.games);
+    // Notify JSgames.js that games are loaded
+    document.dispatchEvent(new Event('gamesLoaded'));
   }
 
   function renderGames(games) {
