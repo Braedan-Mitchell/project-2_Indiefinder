@@ -8,7 +8,6 @@ document.addEventListener('gamesLoaded', function() {
     const ratingValue = document.getElementById('rating-value');
     const consoleFilter = document.getElementById('console-filter');
     const priceRange = document.getElementById('price-range');
-    const priceValue = document.getElementById('price-value');
     const priceMaxValue = document.getElementById('price-max-value');
     const resetBtn = document.getElementById('reset-filters');
 
@@ -70,8 +69,7 @@ document.addEventListener('gamesLoaded', function() {
         const minRating = parseFloat(ratingRange.value);
         const sortBy = sortOption.value;
 
-        // Filter games from actual data
-        let filtered = window.gamesData.filter(game => {
+        const filtered = window.gamesData.filter(game => {
             const gameName = game.title.toLowerCase();
             const gamePrice = game.price;
             const gameGenres = game.genre.map(g => g.toLowerCase()).join(', ');
@@ -112,40 +110,6 @@ document.addEventListener('gamesLoaded', function() {
             }
         });
 
-        // Update display by re-rendering from filtered data
-        const gameBox = document.querySelector('#game-box');
-        gameBox.innerHTML = '';
-        filtered.forEach(game => {
-            const gameElement = document.createElement('div');
-            gameElement.className = 'game-box';
-            
-            const img = document.createElement('img');
-            img.src = game.image || 'placeholder.jpg';
-            img.alt = game.title;
-            img.className = 'game-image';
-            
-            const gameInfo = document.createElement('div');
-            gameInfo.className = 'game-info';
-            
-            const title = document.createElement('h3');
-            title.textContent = game.title;
-            title.className = 'game-name';
-            
-            const genres = document.createElement('p');
-            genres.textContent = game.genre.join(', ');
-            genres.className = 'game-genres';
-            
-            const price = document.createElement('p');
-            price.textContent = `$${game.price.toFixed(2)}`;
-            price.className = 'game-price';
-            
-            gameInfo.appendChild(title);
-            gameInfo.appendChild(genres);
-            gameInfo.appendChild(price);
-            
-            gameElement.appendChild(img);
-            gameElement.appendChild(gameInfo);
-            gameBox.appendChild(gameElement);
-        });
+        window.renderGames(filtered);
     }
 });

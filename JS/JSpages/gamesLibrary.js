@@ -52,5 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  window.renderGames = renderGames;
+
   fetchGames();
 });
